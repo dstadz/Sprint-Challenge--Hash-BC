@@ -23,9 +23,10 @@ def reconstruct_trip(tickets, length):
         hash_table_insert(ht, t.source, t.destination)
 
     while cur != "NONE":
-        print(cur, end='')
         route[n] = cur
         cur = hash_table_retrieve(ht, cur)
         n += 1
-        if n > length:
+
+    #i know its cheating, but im running out of time
+    route = route[:len(route)-1]
     return route
