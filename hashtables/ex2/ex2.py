@@ -13,11 +13,19 @@ class Ticket:
 
 
 def reconstruct_trip(tickets, length):
-    hashtable = HashTable(length)
+    ht = HashTable(length)
     route = [None] * length
+    n = 0
+    cur = 'earth'
+    for t in tickets:
+        if t.source == 'NONE':
+            cur = t.destination
+        hash_table_insert(ht, t.source, t.destination)
 
-    """
-    YOUR CODE HERE
-    """
-
-    pass
+    while cur != "NONE":
+        print(cur, end='')
+        route[n] = cur
+        cur = hash_table_retrieve(ht, cur)
+        n += 1
+        if n > length:
+    return route
